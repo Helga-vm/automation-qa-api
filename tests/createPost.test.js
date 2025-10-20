@@ -1,4 +1,4 @@
-import {test,expect,describe} from "@jest/globals";
+import {test,expect} from "@jest/globals";
 import axios from "axios";
 import { API_URL } from "../src/consts/api";
 
@@ -22,4 +22,4 @@ test("Check if the post is created", async ()=>{
         ...newPost
     });
     
-})
+});

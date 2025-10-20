@@ -5,4 +5,4 @@ const config = {
     transform: {}
 };
 
-export default config
+export default config;

@@ -1,4 +1,4 @@
-import {test,expect,describe} from "@jest/globals";
+import {test,expect} from "@jest/globals";
 import axios from "axios";
 import { API_URL } from "../src/consts/api";
 
@@ -19,4 +19,4 @@ test("Check if post with the ID exists", async () =>{
         body: expect.any(String),
         userId: expect.any(Number)
     }); 
-})
+});

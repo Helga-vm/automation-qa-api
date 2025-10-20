@@ -1,4 +1,4 @@
-import {test,expect,describe} from "@jest/globals";
+import {test,expect} from "@jest/globals";
 import axios from "axios";
 import { API_URL } from "../src/consts/api";
 
@@ -11,7 +11,7 @@ const newBody = {
     body: "New body to replace existing one"
 };
 
-test("Check if changes to post are applied",async () =>{
+test("Check if partial changes to post are applied",async () =>{
     const postId = 12;
     const response = await apiClient.patch(`/posts/${postId}`,newBody);
 
