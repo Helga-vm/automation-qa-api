@@ -1,0 +1,302 @@
+<html><head><meta charset="utf-8"/><title>Test Report</title><style type="text/css">:root {
+  --text-primary: #111;
+  --text-secondary: #4f4f4f;
+  --success: #006633;
+  --success-bright: #80ffbf;
+  --danger: #cc071e;
+  --danger-bright: #fbdfe0;
+  --warning: #995c00;
+  --warning-bright: #ffeea8;
+  --panel: #eee;
+  --border: #949494;
+  --disabled: #6b6b6b;
+}
+
+html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  color: var(--text-primary);
+}
+body {
+  padding: 2rem 1rem;
+}
+.jesthtml-content {
+  margin: 0 auto;
+  max-width: 70rem;
+}
+header {
+  display: flex;
+  align-items: center;
+}
+#title {
+  margin: 0;
+  flex-grow: 1;
+}
+#logo {
+  height: 4rem;
+}
+#timestamp {
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+#metadata-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.additional-information-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+}
+
+/** SUMMARY */
+#summary {
+  color: var(--text-primary);
+  display: flex;
+  font-family: monospace;
+  font-size: 1rem;
+}
+#summary > div {
+  margin-right: 0.5rem;
+  background: var(--panel);
+  padding: 1rem;
+  min-width: 15rem;
+}
+#summary > div:last-child {
+  margin-right: 0;
+}
+@media only screen and (max-width: 720px) {
+  #summary {
+    flex-direction: column;
+  }
+  #summary > div {
+    margin-right: 0;
+    margin-top: 1rem;
+  }
+  #summary > div:first-child {
+    margin-top: 0;
+  }
+}
+
+.summary-total {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.summary-passed {
+  color: var(--success);
+  border-left: 0.4rem solid var(--success);
+  padding-left: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+.summary-failed,
+.summary-obsolete-snapshots {
+  color: var(--danger);
+  border-left: 0.4rem solid var(--danger);
+  padding-left: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+.summary-pending {
+  color: var(--warning);
+  border-left: 0.4rem solid var(--warning);
+  padding-left: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+.summary-empty {
+  color: var(--disabled);
+  border-left: 0.4rem solid var(--disabled);
+  margin-bottom: 0.15rem;
+}
+
+.test-result {
+  padding: 1rem;
+  margin-bottom: 0.25rem;
+}
+.test-result:last-child {
+  border: 0;
+}
+.test-result.passed {
+  background-color: var(--success-bright);
+  color: var(--success);
+}
+.test-result.failed {
+  background-color: var(--danger-bright);
+  color: var(--danger);
+}
+.test-result.pending {
+  background-color: var(--warning-bright);
+  color: var(--warning);
+}
+
+.test-info {
+  display: flex;
+  justify-content: space-between;
+}
+.test-suitename {
+  width: 20%;
+  text-align: left;
+  font-weight: bold;
+  word-break: break-word;
+}
+.test-title {
+  width: 40%;
+  text-align: left;
+  font-style: italic;
+}
+.test-status {
+  width: 20%;
+  text-align: right;
+}
+.test-duration {
+  width: 10%;
+  text-align: right;
+  font-size: 0.85rem;
+}
+
+.failureMessages {
+  padding: 0 1rem;
+  margin-top: 1rem;
+  border-top: 1px dashed var(--danger);
+}
+.failureMessages.suiteFailure {
+  border-top: none;
+}
+.failureMsg {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+.suite-container {
+  margin-bottom: 1rem;
+}
+.suite-info {
+  padding: 1rem;
+  background-color: var(--panel);
+  color: var(--text-secondary);
+  border: 0.15rem solid;
+  border-color: var(--panel);
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+.suite-info:hover {
+  border-color: var(--border);
+  cursor: pointer;
+}
+.suite-info .suite-path {
+  word-break: break-all;
+  flex-grow: 1;
+  font-family: monospace;
+  font-size: 1rem;
+}
+.suite-info .suite-time {
+  margin-left: 1rem;
+  padding: 0.2rem 0.3rem;
+  font-size: 0.85rem;
+}
+.suite-info .suite-time.warn {
+  background-color: var(--danger);
+  color: #fff;
+}
+.suite-info:before {
+  content: "\2303";
+  display: inline-block;
+  margin-right: 1rem;
+  transform: rotate(180deg) translateY(0.15rem);
+}
+.suite-container[open] .suite-info:before {
+  transform: rotate(0deg) translateY(0.15rem);
+}
+
+/* CONSOLE LOGS */
+.suite-consolelog {
+  margin-bottom: 0.25rem;
+  padding: 1rem;
+  background-color: var(--panel);
+}
+.suite-consolelog-header {
+  font-weight: bold;
+}
+.suite-consolelog-item {
+  padding: 0.5rem;
+}
+.suite-consolelog-item pre {
+  margin: 0.5rem 0;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.suite-consolelog-item-origin {
+  color: var(--text-secondary);
+  font-weight: bold;
+}
+.suite-consolelog-item-message {
+  color: var(--text-primary);
+  font-size: 1rem;
+  padding: 0 0.5rem;
+}
+
+/* OBSOLETE SNAPSHOTS */
+.suite-obsolete-snapshots {
+  margin-bottom: 0.25rem;
+  padding: 1rem;
+  background-color: var(--danger-bright);
+  color: var(--danger);
+}
+.suite-obsolete-snapshots-header {
+  font-weight: bold;
+}
+.suite-obsolete-snapshots-item {
+  padding: 0.5rem;
+}
+.suite-obsolete-snapshots-item pre {
+  margin: 0.5rem 0;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.suite-obsolete-snapshots-item-message {
+  color: var(--text-primary);
+  font-size: 1rem;
+  padding: 0 0.5rem;
+}
+</style></head><body><main class="jesthtml-content"><header><h1 id="title">Test Report</h1></header><section id="metadata-container"><div id="timestamp">Started: 2025-10-28 00:57:15</div><div id="summary"><div id="suite-summary"><div class="summary-total">Suites (13)</div><div class="summary-passed  summary-empty">0 passed</div><div class="summary-failed ">1 failed</div><div class="summary-pending ">12 pending</div></div><div id="test-summary"><div class="summary-total">Tests (35)</div><div class="summary-passed ">2 passed</div><div class="summary-failed ">3 failed</div><div class="summary-pending ">30 pending</div></div></div></section><details id="suite-1" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/Users/helga/Documents/Work related/automation-qa-api/tests/posts/updatePost.test.js</div><div class="suite-time">0.251s</div></summary><div class="suite-tests"><div class="test-result pending"><div class="test-info"><div class="test-suitename"> </div><div class="test-title">Check if partial changes to post are applied</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div></div></details><details id="suite-2" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/Users/helga/Documents/Work related/automation-qa-api/tests/posts/getPost.test.js</div><div class="suite-time">0.285s</div></summary><div class="suite-tests"><div class="test-result pending"><div class="test-info"><div class="test-suitename"> </div><div class="test-title">Check if post with the ID exists</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div></div></details><details id="suite-3" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/Users/helga/Documents/Work related/automation-qa-api/tests/posts/createPost.test.js</div><div class="suite-time">0.246s</div></summary><div class="suite-tests"><div class="test-result pending"><div class="test-info"><div class="test-suitename"> </div><div class="test-title">Check if the post is created</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div></div></details><details id="suite-4" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/Users/helga/Documents/Work related/automation-qa-api/tests/posts/replacePost.test.js</div><div class="suite-time">0.299s</div></summary><div class="suite-tests"><div class="test-result pending"><div class="test-info"><div class="test-suitename">Replacement post checks</div><div class="test-title">Check replacement with all-fields-object</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Replacement post checks</div><div class="test-title">Check replacement with some-fields-object</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div></div></details><details id="suite-5" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/Users/helga/Documents/Work related/automation-qa-api/tests/cars/deleteCar.test.js</div><div class="suite-time">0.377s</div></summary><div class="suite-tests"><div class="test-result pending"><div class="test-info"><div class="test-suitename">Delete user car by id</div><div class="test-title">Check if created car can be deleted by id</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Delete user car by id</div><div class="test-title">Check if non-existing car can be deleted by id</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Delete user car by id</div><div class="test-title">Check if car can be deleted by other fields data</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div></div></details><details id="suite-6" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/Users/helga/Documents/Work related/automation-qa-api/tests/cars/createCar.test.js</div><div class="suite-time">0.4s</div></summary><div class="suite-tests"><div class="test-result pending"><div class="test-info"><div class="test-suitename">Create car</div><div class="test-title">Should be possible to create new car with valid data</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Create car</div><div class="test-title">Check if new car with invalid input structure creation is impossible</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Create car</div><div class="test-title">Check if new car with invalid input values creation is impossible</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Create car</div><div class="test-title">Check if new car with invalid input limits creation is impossible</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div></div></details><details id="suite-7" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/Users/helga/Documents/Work related/automation-qa-api/tests/cars/getCarById.test.js</div><div class="suite-time">0.458s</div></summary><div class="suite-tests"><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get user car by id</div><div class="test-title">Check if created car can be retrieved by id</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get user car by id</div><div class="test-title">Check if created by other user car can be retrieved by id</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get user car by id</div><div class="test-title">Check if non-existing car can be retrieved by id</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get user car by id</div><div class="test-title">Check if car can be retrieved by other fields data</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div></div></details><details id="suite-8" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/Users/helga/Documents/Work related/automation-qa-api/tests/cars/getModelById.test.js</div><div class="suite-time">0.401s</div></summary><div class="suite-tests"><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get model by id</div><div class="test-title">Check if any model from list can be retrieved by id</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get model by id</div><div class="test-title">Check if non existing model id cannot be retrieved</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get model by id</div><div class="test-title">Check if model cannot be retrieved by other fields - title</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div></div></details><details id="suite-9" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/Users/helga/Documents/Work related/automation-qa-api/tests/cars/getUserCars.test.js</div><div class="suite-time">0.186s</div></summary><div class="suite-tests"><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get user cars</div><div class="test-title">Check if all created by the user cars are in the list (by ids)</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get user cars</div><div class="test-title">Check the structure of the car in user cars list</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div></div></details><details id="suite-10" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/Users/helga/Documents/Work related/automation-qa-api/tests/cars/getModels.test.js</div><div class="suite-time">0.209s</div></summary><div class="suite-tests"><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get list of all models</div><div class="test-title">Check retrieving models list</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get list of all models</div><div class="test-title">Check if all models in the list has expected structure</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get list of all models</div><div class="test-title">Check if all models are assigned to existing brands</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div></div></details><details id="suite-11" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/Users/helga/Documents/Work related/automation-qa-api/tests/cars/getBrandById.test.js</div><div class="suite-time">0.227s</div></summary><div class="suite-tests"><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get brand by id</div><div class="test-title">Check if any brand from list can be retrieved by id</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get brand by id</div><div class="test-title">Check if non existing brand id cannot be retrieved</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get brand by id</div><div class="test-title">Check if brand cannot be retrieved by other fields - title</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get brand by id</div><div class="test-title">Check if brand cannot be retrieved by other fields - logoFilename</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div></div></details><details id="suite-12" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/Users/helga/Documents/Work related/automation-qa-api/tests/cars/getBrands.test.js</div><div class="suite-time">0.217s</div></summary><div class="suite-tests"><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get list of all brands</div><div class="test-title">Check retrieving brands list</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div><div class="test-result pending"><div class="test-info"><div class="test-suitename">Get list of all brands</div><div class="test-title">Check if all brands in the list has expected structure</div><div class="test-status">pending</div><div class="test-duration"> </div></div></div></div></details><details id="suite-13" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/Users/helga/Documents/Work related/automation-qa-api/tests/cars/updateCar.test.js</div><div class="suite-time warn">11.398s</div></summary><div class="suite-tests"><div class="test-result failed"><div class="test-info"><div class="test-suitename">Update car</div><div class="test-title">Should be possible to update car with valid data</div><div class="test-status">failed</div><div class="test-duration">2.959s</div></div><div class="failureMessages"> <pre class="failureMsg">Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 1
++ Received  + 1
+
+@@ -6,7 +6,7 @@
+    "id": 431865,
+    "initialMileage": 5,
+    "logo": "audi.png",
+    "mileage": 6,
+    "model": "TT",
+-   "updatedMileageAt": "2025-10-27T22:57:17.734Z",
++   "updatedMileageAt": "2025-10-27T22:57:17.000Z",
+  }
+    at Object.&lt;anonymous&gt; (/Users/helga/Documents/Work related/automation-qa-api/tests/cars/updateCar.test.js:94:47)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</pre></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Update car</div><div class="test-title">Check if updating a car with partial input structure is possible</div><div class="test-status">passed</div><div class="test-duration">2.941s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">Update car</div><div class="test-title">Check if updating a car with invalid input values is impossible</div><div class="test-status">failed</div><div class="test-duration">0.282s</div></div><div class="failureMessages"> <pre class="failureMsg">Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 201
+Received: 400
+    at Object.&lt;anonymous&gt; (/Users/helga/Documents/Work related/automation-qa-api/tests/cars/updateCar.test.js:38:41)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</pre></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">Update car</div><div class="test-title">Check if updating a car with invalid input limits is impossible</div><div class="test-status">failed</div><div class="test-duration">2.561s</div></div><div class="failureMessages"> <pre class="failureMsg">Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 404
+Received: 200
+    at Object.&lt;anonymous&gt; (/Users/helga/Documents/Work related/automation-qa-api/tests/cars/updateCar.test.js:175:42)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</pre></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Update car</div><div class="test-title">Check if updating a car with milage less than previous is impossible</div><div class="test-status">passed</div><div class="test-duration">2.164s</div></div></div></div></details></main></body></html>
